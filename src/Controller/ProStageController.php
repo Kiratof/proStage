@@ -11,7 +11,7 @@ class ProStageController extends AbstractController
     
     public function index()
     {
-        return new Response('<html><body><h1> Bienvenue sur la page d\'accueil de Prostages </h1></body></html>' );
+        return $this->render('pro_stage/index.html.twig');
     }
 
     public function brutEntreprises()

@@ -9,24 +9,24 @@ use Symfony\Component\HttpFoundation\Response;
 class ProStageController extends AbstractController
 {
     
-    public function index()
+    public function index() 
     {
         return $this->render('pro_stage/index.html.twig');
     }
 
     public function brutEntreprises()
     {
-        return new Response('<html><body><h1> Cette page affichera la liste des entreprises proposant un stage </h1></body></html>' );
+        return $this->render('pro_stage/affichageEntreprises.html.twig');
     }
 
     public function brutFormations()
     {
-        return new Response('<html><body><h1> Cette page affichera la liste des formations de l\'IUTs </h1></body></html>' );
+        return $this->render('pro_stage/affichageFormations.html.twig');
     }
 
     public function brutStage($id)
     {
-        return new Response('<html><body><h1> Cette page affichera le descriptif du stage ayant pour identifiant '. $id . ' </h1></body></html>' );
+        return $this->render('pro_stage/affichageStage.html.twig', ['idRessource' => $id] );
     }
 
 

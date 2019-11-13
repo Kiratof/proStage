@@ -14,17 +14,17 @@ class ProStageController extends AbstractController
         return $this->render('pro_stage/index.html.twig');
     }
 
-    public function brutEntreprises()
+    public function affichageEntreprises()
     {
         return $this->render('pro_stage/affichageEntreprises.html.twig');
     }
 
-    public function brutFormations()
+    public function affichageFormations()
     {
         return $this->render('pro_stage/affichageFormations.html.twig');
     }
 
-    public function brutStage($id)
+    public function affichageStage($id)
     {
         return $this->render('pro_stage/affichageStage.html.twig', ['idRessource' => $id] );
     }

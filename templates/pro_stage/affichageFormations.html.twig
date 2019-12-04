@@ -2,17 +2,15 @@
 
 {% block contenu %}
 
-    <h1>Hello ✅</h1>
+  <h2>Formations</h2>
+  <ul>
+      <li><a href="{{path('proStage_stages',{id:1})}}"> DUT Informatique </a> </li>
 
-        <h2>Formations</h2>
-    <ul>
-        <li><a href="{{path('proStage_stages',{id:1})}}"> DUT Informatique </a> </li>
+      <li><a href="{{path('proStage_stages',{id:2})}}"> BTS réseau </a></li>
 
-        <li><a href="{{path('proStage_stages',{id:2})}}"> BTS réseau </a></li>
+      <li><a href="{{path('proStage_stages',{id:3})}}"> Licence STAPS </a></li>
 
-        <li><a href="{{path('proStage_stages',{id:3})}}"> Licence STAPS </a></li>
-
-        <li><a href="{{path('proStage_stages',{id:4})}}"> Master philosophie </a></li>
-    </ul>
+      <li><a href="{{path('proStage_stages',{id:4})}}"> Master philosophie </a></li>
+  </ul>
 
 {% endblock %}

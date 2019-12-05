@@ -1,9 +1,41 @@
 {% extends 'base.html.twig' %}
 
-{% block contenu %}
+{% block titrePage %}
+    Dernières ressources ajoutées 
+{% endblock %}
 
-    <a href="{{path('proStage_entreprises')}}"> Entreprises </a> </br>
+{% block contenuPage %}
 
-    <a href="{{path('proStage_formations')}}"> Formations </a>
-
+<div class="card-group">
+  <div class="card">
+    <a href="{{path('proStage_stages',{id:6})}}">
+        <img src="{{asset('/img/GNOME_Web_logo.png')}}" class="card-img-top">
+    </a>  
+    <div class="card-body">
+      <h5 class="card-title">Développeur front-end</h5>
+      <p class="card-text">Gagnez de l'experience grâce à nos equipes experimentées en tout</p>
+      <p class="card-text"><small class="text-muted">Date d'ajout : 20/12/2012 </small></p>
+    </div>
+  </div>
+  <div class="card">
+    <a href="{{path('proStage_stages',{id:7})}}">
+        <img src="{{asset('/img/hl3.jpg')}}" class="card-img-top">
+    </a>
+    <div class="card-body">
+      <h5 class="card-title">Programmateur gameplay</h5>
+      <p class="card-text">Rejoignez l'équipe et participez à la création d'Half life 3</p>
+      <p class="card-text"><small class="text-muted">Date d'ajout : 20/11/2019 </small></p>
+    </div>
+  </div>
+  <div class="card">
+    <a href="{{path('proStage_stages',{id:9})}}">
+        <img src="{{asset('/img/chef.jpeg')}}" class="card-img-top">
+    </a>
+    <div class="card-body">
+      <h5 class="card-title">Assistant chef de projet</h5>
+      <p class="card-text">Utilisez vos meilleurs techniques de communication pour faire faire aux autres ce que vous voulez pas faiire</p>
+      <p class="card-text"><small class="text-muted">Date d'ajout : 4/03/1995 </small></p>
+    </div>
+  </div>
+</div>
 {% endblock %}

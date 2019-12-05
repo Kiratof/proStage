@@ -1,8 +1,10 @@
 {% extends 'base.html.twig' %}
 
-{% block contenu %}
-
+{% block titrePage %}
   <h2>Formations</h2>
+{% endblock %}
+
+{% block contenuPage %}
   <ul>
       <li><a href="{{path('proStage_stages',{id:1})}}"> DUT Informatique </a> </li>
 

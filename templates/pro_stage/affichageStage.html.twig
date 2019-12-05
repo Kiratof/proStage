@@ -1,9 +1,19 @@
 {% extends 'base.html.twig' %}
 
 
+{% block titrePage %}
+<h2> Nom de la ressource {{idRessource}} </h2>
+{% endblock %}
 
-{% block contenu %}
+{% block contenuPage %}
 
-    <p> Ici se trouveront les stages ayant pour identifiant {{idRessource}} </p>
+<ul class="list-group">
+    <li class="list-group-item"><img src="{{asset('/img/hl3.jpg')}}" class="card-img-top"></li>
+    <li class="list-group-item">Missions : </li>
+    <li class="list-group-item">Compétences</li>
+    <li class="list-group-item">Gratification</li>
+    <li class="list-group-item">Date</li>
+    <li class="list-group-item"><a href="">Télécharger l'offre de stage </a></li>
+</ul>
 
 {% endblock %}

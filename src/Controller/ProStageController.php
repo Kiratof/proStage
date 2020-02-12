@@ -6,6 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Response;
 use App\Repository\StageRepository;
+use App\Entity\Stage;
 
 class ProStageController extends AbstractController
 {
@@ -33,7 +34,16 @@ class ProStageController extends AbstractController
 
     public function ajoutStage()
     {
-        return $this->render('pro_stage/ajoutStage.html.twig');
+        $stage = new Stage();
+
+        $formulaireStage = $this->createFormBuilder($stage)
+        ->add('titre')
+        ->add('description')
+        ->add('missions')
+        ->add('email')
+        ->getForm();
+
+        return $this->render('pro_stage/ajoutStage.html.twig', ['vueFormulaire' => $formulaireStage->createView()]);
     }
 
 

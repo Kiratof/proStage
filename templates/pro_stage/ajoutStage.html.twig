@@ -1,1 +1,9 @@
 {% extends 'base.html.twig' %}
+
+{% block titrePage %}Ajout d'un stage{% endblock %}
+
+{% block contenuPage %}
+Saisissez les caractéristiques de la ressource que vous souhaitez partager.
+
+{{ form(vueFormulaire) }}
+{% endblock %}

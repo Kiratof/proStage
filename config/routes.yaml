@@ -13,3 +13,8 @@ proStage_formations:
 proStage_stages:
     path: /stage/{id}
     controller: App\Controller\ProStageController::affichageStage
+
+    
+proStage_ajout_stage:
+    path: /ajoutstage
+    controller: App\Controller\ProStageController::ajoutStage

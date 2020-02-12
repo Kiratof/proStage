@@ -31,6 +31,10 @@ class ProStageController extends AbstractController
         return $this->render('pro_stage/affichageStage.html.twig', ['idRessource' => $id] );
     }
 
+    public function ajoutStage()
+    {
+        return $this->render('pro_stage/ajoutStage.html.twig');
+    }
 
 
 }

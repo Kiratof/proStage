@@ -7,6 +7,10 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Response;
 use App\Repository\StageRepository;
 use App\Entity\Stage;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\EmailType;
+
 
 class ProStageController extends AbstractController
 {
@@ -37,13 +41,13 @@ class ProStageController extends AbstractController
         $stage = new Stage();
 
         $formulaireStage = $this->createFormBuilder($stage)
-        ->add('titre')
-        ->add('description')
-        ->add('missions')
-        ->add('email')
+        ->add('titre', TextType::class)
+        ->add('description', TextareaType::class)
+        ->add('missions', TextareaType::class)
+        ->add('email', EmailType::class)
         ->getForm();
 
-        return $this->render('pro_stage/ajoutStage.html.twig', ['vueFormulaire' => $formulaireStage->createView()]);
+        return $this->render('pro_stage/ajoutStage.html.twig', ['vueFormulaireStage' => $formulaireStage->createView()]);
     }
 
 

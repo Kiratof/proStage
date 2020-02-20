@@ -3,7 +3,33 @@
 {% block titrePage %}Ajout d'un stage{% endblock %}
 
 {% block contenuPage %}
-Saisissez les caractéristiques de la ressource que vous souhaitez partager.
+<h4> Saisissez les caractéristiques de la ressource que vous souhaitez partager. </h4> 
 
-{{ form(vueFormulaire) }}
+
+{{ form_start (vueFormulaireStage)}}
+    <div>
+        {{ form_label (vueFormulaireStage.titre)}}
+        {{ form_errors (vueFormulaireStage.titre)}}
+        {{ form_widget (vueFormulaireStage.titre)}}
+    </div>
+
+    <div>
+        {{ form_label (vueFormulaireStage.description)}}
+        {{ form_errors (vueFormulaireStage.description)}}
+        {{ form_widget (vueFormulaireStage.description)}}
+    </div>
+
+    <div>
+        {{ form_label (vueFormulaireStage.missions)}}
+        {{ form_errors (vueFormulaireStage.missions)}}
+        {{ form_widget (vueFormulaireStage.missions)}}
+    </div>
+
+    <div>
+        {{ form_label (vueFormulaireStage.email)}}
+        {{ form_errors (vueFormulaireStage.email)}}
+        {{ form_widget (vueFormulaireStage.email)}}
+    </div>
+
+{{ form_end (vueFormulaireStage)}}
 {% endblock %}

@@ -18,3 +18,7 @@ proStage_stages:
 proStage_ajout_stage:
     path: /ajoutstage
     controller: App\Controller\ProStageController::ajoutStage
+
+proStage_modif_stage:
+    path: /modifstage/{id}
+    controller: App\Controller\ProStageController::modifStage

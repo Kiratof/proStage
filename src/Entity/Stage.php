@@ -41,14 +41,8 @@ class Stage
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Entreprise", inversedBy="stages")
-     * @ORM\JoinColumn(nullable=false)
      */
     private $entreprise;
-
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $Stage;
 
     /**
      * @ORM\ManyToMany(targetEntity="App\Entity\Formation", inversedBy="stages")

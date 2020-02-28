@@ -10,7 +10,8 @@ use App\Entity\Stage;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
-
+use Symfony\Component\HttpFoundation\Request;
+use Doctrine\Common\Persistence\ObjectManager;
 
 class ProStageController extends AbstractController
 {
@@ -36,7 +37,7 @@ class ProStageController extends AbstractController
         return $this->render('pro_stage/affichageStage.html.twig', ['idRessource' => $id] );
     }
 
-    public function ajoutStage()
+    public function ajoutStage(Request $request, ObjectManager $manager)
     {
         $stage = new Stage();
 
@@ -47,7 +48,43 @@ class ProStageController extends AbstractController
         ->add('email', EmailType::class)
         ->getForm();
 
-        return $this->render('pro_stage/ajoutStage.html.twig', ['vueFormulaireStage' => $formulaireStage->createView()]);
+        $formulaireStage->handleRequest($request);
+
+        if($formulaireStage->isSubmitted()){
+            //Enregistrer la ressource en BD
+            $manager->persist($stage);
+            $manager->flush();
+
+            //Ramener l'user à la page d'accueil
+            return $this->redirectToRoute('proStage_accueil');
+
+        }
+
+        return $this->render('pro_stage/ajoutModifStage.html.twig', ['vueFormulaireStage' => $formulaireStage->createView(), 'action' => "ajouter"]);
+    }
+
+    public function modifStage(Request $request, ObjectManager $manager, Stage $stage)
+    {
+        $formulaireStage = $this->createFormBuilder($stage)
+        ->add('titre', TextType::class)
+        ->add('description', TextareaType::class)
+        ->add('missions', TextareaType::class)
+        ->add('email', EmailType::class)
+        ->getForm();
+
+        $formulaireStage->handleRequest($request);
+
+        if($formulaireStage->isSubmitted()){
+            //Enregistrer la ressource en BD
+            $manager->persist($stage);
+            $manager->flush();
+
+            //Ramener l'user à la page d'accueil
+            return $this->redirectToRoute('proStage_accueil');
+
+        }
+
+        return $this->render('pro_stage/ajoutModifStage.html.twig', ['vueFormulaireStage' => $formulaireStage->createView(), 'action' => "modifier"]);
     }
 
 

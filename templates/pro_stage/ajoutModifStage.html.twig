@@ -40,9 +40,11 @@ Modifier une ressource pédagogique
 
     
     <div>
-        {{ form_label (vueFormulaireStage.entreprise)}}
-        {{ form_errors (vueFormulaireStage.entreprise)}}
-        {{ form_widget (vueFormulaireStage.entreprise, {'label': 'Entreprise'})}}
+        {{ form_row(vueFormulaireStage.entreprise, {'label': "Entreprise"})}}
+    </div>
+
+    <div>
+        {{ form_row(vueFormulaireStage.formations, {'label': "Formations correspondante au stage"})}}
     </div>
     
     
@@ -50,4 +52,5 @@ Modifier une ressource pédagogique
     
 
 {{ form_end (vueFormulaireStage)}}
+
 {% endblock %}

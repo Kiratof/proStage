@@ -4,13 +4,13 @@ namespace App\Form;
 
 use App\Entity\Stage;
 use App\Entity\Entreprise;
+use App\Entity\Formation;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
-use App\Form\EntrepriseType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 
 class StageType extends AbstractType
@@ -32,6 +32,20 @@ class StageType extends AbstractType
 
 
             ))
+            ->add('formations', EntityType::class, array(
+
+                'class' => Formation::class,
+                'choice_label' => function(Formation $formation){
+                    return $formation->getIntitule() . ' - ' . $formation->getDiscipline();
+                },
+                 
+                'multiple' => true,
+                'expanded' => true,
+
+
+            ))
+
+
         ;
     }
 

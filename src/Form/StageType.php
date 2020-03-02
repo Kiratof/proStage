@@ -12,6 +12,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use App\Repository\FormationRepository;
 
 class StageType extends AbstractType
 {
@@ -35,6 +36,10 @@ class StageType extends AbstractType
             ->add('formations', EntityType::class, array(
 
                 'class' => Formation::class,
+                'query_builder' => function (FormationRepository $repFomration) {
+                    return $repFomration->createQuerybuilder('m')
+                    ->orderBy('m.intitule', 'ASC');
+                },
                 'choice_label' => function(Formation $formation){
                     return $formation->getIntitule() . ' - ' . $formation->getDiscipline();
                 },

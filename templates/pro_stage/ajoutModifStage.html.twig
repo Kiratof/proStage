@@ -37,6 +37,13 @@ Modifier une ressource pédagogique
         {{ form_errors (vueFormulaireStage.email)}}
         {{ form_widget (vueFormulaireStage.email, {'attr':{'placeholder':'Email de contact'}})}}
     </div>
+
+    
+    <div>
+        {{ form_label (vueFormulaireStage.entreprise)}}
+        {{ form_errors (vueFormulaireStage.entreprise)}}
+        {{ form_widget (vueFormulaireStage.entreprise, {'label': 'Entreprise'})}}
+    </div>
     
     
     <button type="submit" class="btn btn-dark">Enregistrer</button>

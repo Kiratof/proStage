@@ -61,12 +61,7 @@ class ProStageController extends AbstractController
 
     public function modifStage(Request $request, ObjectManager $manager, Stage $stage)
     {
-        $formulaireStage = $this->createFormBuilder($stage)
-        ->add('titre', TextType::class)
-        ->add('description', TextareaType::class)
-        ->add('missions', TextareaType::class)
-        ->add('email', EmailType::class)
-        ->getForm();
+        $formulaireStage = $this->createForm(StageType::class, $stage);
 
         $formulaireStage->handleRequest($request);
 

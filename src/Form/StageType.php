@@ -23,16 +23,7 @@ class StageType extends AbstractType
             ->add('description', TextareaType::class)
             ->add('missions', TextareaType::class)
             ->add('email', EmailType::class)
-            ->add('entreprise', EntityType::class, array(
-
-                'class' => Entreprise::class,
-                'choice_label' => 'nom',
-                 
-                'multiple' => false,
-                'expanded' => true,
-
-
-            ))
+            ->add('entreprise', EntrepriseType::class)
             ->add('formations', EntityType::class, array(
 
                 'class' => Formation::class,

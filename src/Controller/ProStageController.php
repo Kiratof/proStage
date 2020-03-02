@@ -12,6 +12,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\HttpFoundation\Request;
 use Doctrine\Common\Persistence\ObjectManager;
+use App\Form\StageType;
 
 class ProStageController extends AbstractController
 {
@@ -41,12 +42,7 @@ class ProStageController extends AbstractController
     {
         $stage = new Stage();
 
-        $formulaireStage = $this->createFormBuilder($stage)
-        ->add('titre', TextType::class)
-        ->add('description', TextareaType::class)
-        ->add('missions', TextareaType::class)
-        ->add('email', EmailType::class)
-        ->getForm();
+        $formulaireStage = $this->createForm(StageType::class, $stage);
 
         $formulaireStage->handleRequest($request);
 

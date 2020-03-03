@@ -4,8 +4,8 @@ security:
         in_memory:
             memory:
                 users:
-                    kiratof: {password: kiratof, roles: ROLE_ADMIN }
-                    hetosirus: {password: hetosirus, roles: ROLE_USER }
+                    kiratof: {password: $2y$15$auvBuQZq4EwdaTkBjU52Le4zoUkGBw.TPzzIX7d.JTyQ2hRV5UHy., roles: ROLE_ADMIN }
+                    hetosirus: {password: $2y$15$EBLfs5FiUu31kMn29rH7HuTQaUGcHG5gSnoSFiSGTGsdy.VuQeWwS, roles: ROLE_USER }
     firewalls:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
@@ -27,4 +27,6 @@ security:
         # - { path: ^/profile, roles: ROLE_USER }
 
     encoders: 
-        Symfony\Component\Security\Core\User\User: plaintext
+        Symfony\Component\Security\Core\User\User:
+            algorithm: bcrypt
+            cost:      15

@@ -23,23 +23,23 @@ class StageType extends AbstractType
             ->add('description', TextareaType::class)
             ->add('missions', TextareaType::class)
             ->add('email', EmailType::class)
-            ->add('entreprise', EntrepriseType::class)
-            ->add('formations', EntityType::class, array(
+            // ->add('entreprise', EntrepriseType::class)
+            // ->add('formations', EntityType::class, array(
 
-                'class' => Formation::class,
-                'query_builder' => function (FormationRepository $repFomration) {
-                    return $repFomration->createQuerybuilder('m')
-                    ->orderBy('m.intitule', 'ASC');
-                },
-                'choice_label' => function(Formation $formation){
-                    return $formation->getIntitule() . ' - ' . $formation->getDiscipline();
-                },
+            //     'class' => Formation::class,
+            //     'query_builder' => function (FormationRepository $repFomration) {
+            //         return $repFomration->createQuerybuilder('m')
+            //         ->orderBy('m.intitule', 'ASC');
+            //     },
+            //     'choice_label' => function(Formation $formation){
+            //         return $formation->getIntitule() . ' - ' . $formation->getDiscipline();
+            //     },
                  
-                'multiple' => true,
-                'expanded' => true,
+            //     'multiple' => true,
+            //     'expanded' => true,
 
 
-            ))
+            // ))
 
 
         ;

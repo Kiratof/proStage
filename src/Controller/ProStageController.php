@@ -46,7 +46,7 @@ class ProStageController extends AbstractController
 
         $formulaireStage->handleRequest($request);
 
-        if($formulaireStage->isSubmitted()){
+        if($formulaireStage->isSubmitted() && $formulaireStage->isValid()){
             //Enregistrer la ressource en BD
             $manager->persist($stage);
             $manager->flush();
@@ -65,7 +65,7 @@ class ProStageController extends AbstractController
 
         $formulaireStage->handleRequest($request);
 
-        if($formulaireStage->isSubmitted()){
+        if($formulaireStage->isSubmitted() && $formulaireStage->isValid()){
             //Enregistrer la ressource en BD
             $manager->persist($stage);
             $manager->flush();

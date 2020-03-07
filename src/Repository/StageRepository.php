@@ -19,6 +19,18 @@ class StageRepository extends ServiceEntityRepository
         parent::__construct($registry, Stage::class);
     }
 
+    /**
+     * @return Stage[] Returns an array of Stage objects
+     */
+    public function findByDateAjout()
+    {
+        return $this->createQueryBuilder('s')
+            ->orderBy('s.dateAjout', 'DESC')
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
     // /**
     //  * @return Stage[] Returns an array of Stage objects
     //  */

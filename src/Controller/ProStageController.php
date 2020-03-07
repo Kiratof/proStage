@@ -47,6 +47,10 @@ class ProStageController extends AbstractController
         $formulaireStage->handleRequest($request);
 
         if($formulaireStage->isSubmitted() && $formulaireStage->isValid()){
+
+            // Mémoriser la date d'ajout de la ressources
+            $stage->setDateAjout(new \dateTime());
+
             //Enregistrer la ressource en BD
             $manager->persist($stage);
             $manager->flush();

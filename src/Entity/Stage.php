@@ -71,6 +71,11 @@ class Stage
      */
     private $formations;
 
+    /**
+     * @ORM\Column(type="date")
+     */
+    private $dateAjout;
+
     public function __construct()
     {
         $this->formations = new ArrayCollection();
@@ -175,6 +180,18 @@ class Stage
         if ($this->formations->contains($formation)) {
             $this->formations->removeElement($formation);
         }
+
+        return $this;
+    }
+
+    public function getDateAjout(): ?\DateTimeInterface
+    {
+        return $this->dateAjout;
+    }
+
+    public function setDateAjout(\DateTimeInterface $dateAjout): self
+    {
+        $this->dateAjout = $dateAjout;
 
         return $this;
     }

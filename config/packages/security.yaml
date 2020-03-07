@@ -14,7 +14,7 @@ security:
             anonymous: true
 
             # activate different ways to authenticate
-            http_basic: true
+            http_basic: false
             # https://symfony.com/doc/current/security.html#firewalls-authentication
 
             # https://symfony.com/doc/current/security/impersonating_user.html
@@ -23,7 +23,7 @@ security:
     # Easy way to control access for large sections of your site
     # Note: Only the *first* access control that matches will be used
     access_control:
-        - { path: ^/, roles: ROLE_ADMIN }
+        # - { path: ^/, roles: ROLE_ADMIN }
         # - { path: ^/profile, roles: ROLE_USER }
 
     encoders: 
@@ -31,5 +31,5 @@ security:
             algorithm: bcrypt
             cost:      15
         App\Entity\User:
-            algorithm: argon2i
+            algorithm: bcrypt
 

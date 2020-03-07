@@ -19,7 +19,7 @@ class ProStageController extends AbstractController
     
     public function index(StageRepository $repo) 
     {
-        $stages = $repo->findByDateAjout();
+        $stages = $repo->findByDateAjoutDql();
         return $this->render('pro_stage/index.html.twig', ["stages" => $stages]);
     }
 

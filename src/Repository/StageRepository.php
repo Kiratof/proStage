@@ -31,6 +31,25 @@ class StageRepository extends ServiceEntityRepository
         ;
     }
 
+        /**
+     * @return Stage[] Returns an array of Stage objects
+     */
+    public function findByDateAjoutDql()
+    {
+       //Récupérer le gestionnaire d'entité
+       $entityManager = $this->getEntityManager();
+
+       //Construction de la requête
+       $requete = $entityManager->createQuery(
+           'SELECT s FROM App\Entity\Stage s
+            ORDER BY s.dateAjout DESC'
+       );
+
+       //Execution de la requete et retour du résultat
+       return $requete->execute();
+
+    }
+
     // /**
     //  * @return Stage[] Returns an array of Stage objects
     //  */

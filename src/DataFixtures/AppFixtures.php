@@ -70,6 +70,7 @@ class AppFixtures extends Fixture
                 $stage->setDescription($faker->realText($maxNbChars = 20, $indexSize = 2));
                 $stage->setEmail($faker->companyEmail);
                 $stage->setMissions($faker->realText($maxNbChars = 50, $indexSize = 2));
+                $stage->setDateAjout($faker->dateTimeBetween($startDate = '-6 months', $endDate = 'now', $timezone = 'Europe/Paris'));
                 $stage->addFormation($formation);
                 
 

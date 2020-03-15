@@ -10,15 +10,14 @@ proStage_formations:
     path: /formations
     controller: App\Controller\ProStageController::affichageFormations
 
-proStage_stages:
-    path: /stage/{id}
-    controller: App\Controller\ProStageController::affichageStage
-
-    
 proStage_ajout_stage:
-    path: /ajoutstage
+    path: /stage/ajout
     controller: App\Controller\ProStageController::ajoutStage
 
 proStage_modif_stage:
-    path: /modifstage/{id}
+    path: /stage/modif/{id}
     controller: App\Controller\ProStageController::modifStage
+
+proStage_stages:
+    path: /stage/{id}
+    controller: App\Controller\ProStageController::affichageStage

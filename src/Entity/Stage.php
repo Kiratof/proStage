@@ -37,7 +37,9 @@ class Stage
      * @Assert\NotBlank
      * @Assert\Length(
      *      min = 20,
-     *      minMessage = "Le titre du stage devrait contenir au moins {{ limit }} caractères"
+     *      max = 255,
+     *      minMessage = "La description du stage devrait contenir au moins {{ limit }} caractères",
+     *      maxMessage = "La description du stage devrait contenir maximum {{ limit }} caractères"
      * 
      * )
      */
@@ -48,7 +50,9 @@ class Stage
      * @Assert\NotBlank
      * @Assert\Length(
      *      min = 20,
-     *      minMessage = "Le titre du stage devrait contenir au moins {{ limit }} caractères"
+     *      max = 255,
+     *      minMessage = "La missions devrait contenir au moins {{ limit }} caractères",
+     *      maxMessage = "La missions devrait contenir maximum {{ limit }} caractères"
      * )
      */
     private $missions;

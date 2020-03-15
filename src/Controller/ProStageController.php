@@ -6,6 +6,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Response;
 use App\Repository\StageRepository;
+use App\Repository\EntrepriseRepository;
+use App\Repository\FormationRepository;
 use App\Entity\Stage;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -23,14 +25,16 @@ class ProStageController extends AbstractController
         return $this->render('pro_stage/index.html.twig', ["stages" => $stages]);
     }
 
-    public function affichageEntreprises()
+    public function affichageEntreprises(EntrepriseRepository $repo)
     {
-        return $this->render('pro_stage/affichageEntreprises.html.twig');
+        $entreprises = $repo->findAll();
+        return $this->render('pro_stage/affichageEntreprises.html.twig', ['entreprises' => $entreprises]);
     }
 
-    public function affichageFormations()
+    public function affichageFormations(FormationRepository $repo)
     {
-        return $this->render('pro_stage/affichageFormations.html.twig');
+        $formations = $repo->findAll();
+        return $this->render('pro_stage/affichageFormations.html.twig', ['formations' => $formations]);
     }
 
     public function affichageStage($id, StageRepository $repo)

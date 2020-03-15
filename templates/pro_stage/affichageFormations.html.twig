@@ -5,6 +5,32 @@
 {% endblock %}
 
 {% block contenuPage %}
- 
+
+{% set debutNouvelleLigne = true %}
+
+  {% for formation in formations %}
+    {% if debutNouvelleLigne == true %}
+
+    <div class="card-group">
+      {% set debutNouvelleLigne = false %}
+    {% endif %}
+
+      
+      <div class="card">  
+        <div class="card-body">
+          <h5 class="card-title">Intitulé : {{formation.intitule}}</h5>
+          <p class="card-text">Discipline : {{formation.discipline}}</p>
+          <p class="card-text">Nom complet : {{formation.nom}}</p>
+        </div>
+      </div>
+
+      {# Vérifier s'il faut passer à la ligne suivante (toutes les 3 ressources affihées) #}
+      {% if loop.index % 3 == 0 %}
+        </div>
+        <br />
+        {% set debutNouvelleLigne = true %}
+      {% endif %}
+
+    {% endfor %}
 
 {% endblock %}

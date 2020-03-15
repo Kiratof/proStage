@@ -22,7 +22,9 @@
           <h5 class="card-title">{{stage.titre}}</h5>
           <p class="card-text">{{stage.description}}</p>
           <p class="card-text"><small class="text-muted">{{stage.dateAjout| date("d/m/Y")}} </small></p>
+          {% if is_granted('ROLE_ADMIN') %}
           <a class="nav-link" href="{{path('proStage_modif_stage',{'id':stage.id})}}">Modifier</a>
+          {% endif %}
           <a class="nav-link" href="{{path('proStage_stages',{'id':stage.id})}}">Afficher</a>
         </div>
       </div>

@@ -8,4 +8,32 @@
 
 {% block contenuPage %}
 
+{% set debutNouvelleLigne = true %}
+
+  {% for entreprise in entreprises %}
+    {% if debutNouvelleLigne == true %}
+
+    <div class="card-group">
+      {% set debutNouvelleLigne = false %}
+    {% endif %}
+
+      
+      <div class="card">  
+        <div class="card-body">
+          <h5 class="card-title">{{entreprise.nom}}</h5>
+          <p class="card-text">{{entreprise.adresse}}</p>
+          <p class="card-text">{{entreprise.activite}}</p>
+          <a class="nav-link" href="#">{{entreprise.siteWeb}}</a>
+        </div>
+      </div>
+
+      {# Vérifier s'il faut passer à la ligne suivante (toutes les 3 ressources affihées) #}
+      {% if loop.index % 3 == 0 %}
+        </div>
+        <br />
+        {% set debutNouvelleLigne = true %}
+      {% endif %}
+
+    {% endfor %}
+
 {% endblock %}

@@ -40,16 +40,30 @@
               <li class="nav-item">
                 <a class="nav-link" href="{{path('proStage_formations')}}">Formations</a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link" href="{{path('proStage_ajout_stage')}}">Ajouter un stage</a>
-              </li>
             </ul>
 
-            {% if is_granted('ROLE_USER') %}
-
             <ul class="navbar-nav ml-md-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="{{path('proStage_ajout_stage')}}">
+                    <i class="icon-plus-3"></i>
+                    Ajouter un stage
+                    <span class="sr-only">(current)</span></a>
+                </li>
+
+                
+            {% if is_granted('ROLE_ADMIN') %}
+                <li class="nav-item active">
+                    <a class="nav-link" href="{{path('proStage_ajout_stage')}}">
+                    <i class="icon-plus-3"></i>
+                    Gérer les entreprises
+                    <span class="sr-only">(current)</span></a>
+                </li>
+                
+            {% endif %}
+
+            {% if is_granted('ROLE_USER') %}
               <li class="nav-item active">
-                <a class="nav-link" href="{{path('app_logout')}}">  
+                <a class="nav-link" href="{{path('app_logout')}}"> 
                   {{ app.user.prenom }}
                   <i class="icon-user-5"></i>
                   Déconnexion

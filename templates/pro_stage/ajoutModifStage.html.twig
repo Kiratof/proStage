@@ -2,15 +2,15 @@
 
 {% block titrePage %}
 {% if action == "ajouter" %}
-Ajout d'une ressource pédagogique
+Ajout d'un stage
 {% else %}
-Modifier une ressource pédagogique
+Modifier un stage
 {% endif %}
 
 {% endblock %}
 
 {% block contenuPage %}
-<h4> Saisissez les caractéristiques de la ressource que vous souhaitez partager. </h4> 
+<h4> Saisissez les caractéristiques du stage que vous souhaitez partager. </h4> 
 
 
 {{ form_start (vueFormulaireStage) }}

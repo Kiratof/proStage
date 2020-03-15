@@ -42,47 +42,47 @@
               </li>
             </ul>
 
+
             <ul class="navbar-nav ml-md-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="{{path('proStage_ajout_stage')}}">
-                    <i class="icon-plus-3"></i>
-                    Ajouter un stage
-                    <span class="sr-only">(current)</span></a>
-                </li>
-
-                
-            {% if is_granted('ROLE_ADMIN') %}
-                <li class="nav-item active">
-                    <a class="nav-link" href="{{path('proStage_ajout_stage')}}">
-                    <i class="icon-plus-3"></i>
-                    Gérer les entreprises
-                    <span class="sr-only">(current)</span></a>
-                </li>
-                
-            {% endif %}
-
-            {% if is_granted('ROLE_USER') %}
+              {% if is_granted('ROLE_ADMIN') %}
               <li class="nav-item active">
-                <a class="nav-link" href="{{path('app_logout')}}"> 
+                <a class="nav-link" href="{{path('proStage_ajout_stage')}}">
+                  <i class="icon-plus-3"></i>
+                  Gérer les entreprises
+                  <span class="sr-only">(current)</span></a>
+              </li>
+
+              {% endif %}
+
+              {% if is_granted('ROLE_USER') %}
+              <li class="nav-item active">
+                <a class="nav-link" href="{{path('proStage_ajout_stage')}}">
+                  <i class="icon-plus-3"></i>
+                  Ajouter un stage
+                  <span class="sr-only">(current)</span></a>
+              </li>
+              <li class="nav-item active">
+                <a class="nav-link" href="{{path('app_logout')}}">
                   {{ app.user.prenom }}
                   <i class="icon-user-5"></i>
                   Déconnexion
                   <span class="sr-only">(current)</span></a>
               </li>
-            </ul>
 
-            {% else %}
 
-            <ul class="navbar-nav ml-md-auto">
-              <li class="nav-item active">
-                <a class="nav-link" href="{{path('app_login')}}">
-                  <i class="icon-user-5"></i>
-                  Connexion
-                  <span class="sr-only">(current)</span></a>
-              </li>
-            </ul>
+              {% else %}
 
-            {% endif %}
+              <ul class="navbar-nav ml-md-auto">
+                <li class="nav-item active">
+                  <a class="nav-link" href="{{path('app_login')}}">
+                    <i class="icon-user-5"></i>
+                    Connexion
+                    <span class="sr-only">(current)</span></a>
+                </li>
+
+
+                {% endif %}
+              </ul>
 
           </div>
         </nav>

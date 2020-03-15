@@ -10,6 +10,7 @@ use App\Entity\User;
 use Symfony\Component\HttpFoundation\Request;
 use Doctrine\Common\Persistence\ObjectManager;
 use App\Form\UserType;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 class SecurityController extends AbstractController
 {
@@ -41,7 +42,7 @@ class SecurityController extends AbstractController
     /**
      * @Route("/register", name="app_register")
      */
-    public function register(Request $request, ObjectManager $manager)
+    public function register(Request $request, ObjectManager $manager, UserPasswordEncoderInterface $encoder)
     {
         $user = new User();
 
@@ -51,12 +52,19 @@ class SecurityController extends AbstractController
 
         if($formulaireUser->isSubmitted() && $formulaireUser->isValid()){
 
+            //Attribuer un rôle à l'utilisateur
+            $user->setRoles(['ROLE_USER']);
+
+            //Encoder le mot de passe de l'utilisateur
+            $encoded = $encoder->encodePassword($user, $user->getPassword());
+            $user->setPassword($encoded);
+
             //Enregistrer l'utilisateur en BD
             $manager->persist($user);
             $manager->flush();
 
             //Ramener l'user à la page d'accueil
-            return $this->redirectToRoute('proStage_accueil');
+            return $this->redirectToRoute('app_login');
 
         }
 

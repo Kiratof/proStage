@@ -7,12 +7,32 @@ use Doctrine\Common\Persistence\ObjectManager;
 use App\Entity\Entreprise;
 use App\Entity\Formation;
 use App\Entity\Stage;
+use App\Entity\User;
 use Doctrine\Migrations\Version\Factory;
 
 class AppFixtures extends Fixture
 {
     public function load(ObjectManager $manager)
     {
+        //Création de 2 utilisateurs de test
+        $kiratof = new User();
+        $kiratof->setPrenom('Christopher');
+        $kiratof->setNom('Grassi');
+        $kiratof->setEmail('c.grassi@hotmail.fr');
+        $kiratof->setRoles(['ROLE_USER', 'ROLE_ADMIN']);
+        $kiratof->setPassword('$2y$10$2LUwzsMBem9hK71jpBwDX.NnUpv.l4CKmxPXZrD2zh2VTYn.F6UWG');
+        $manager->persist($kiratof);
+
+        $yrax = new User();
+        $yrax->setPrenom('Bastien');
+        $yrax->setNom('Serena');
+        $yrax->setEmail('basty34@hotmail.fr');
+        $yrax->setRoles(['ROLE_USER']);
+        $yrax->setPassword('$2y$10$9nvwLIXOaizq2KWrZyos3.0J8XbCLDik9xtBELQy98FFr.kLNQ40K');
+        $manager->persist($yrax);
+        
+
+
         // Création d'un générateur de données faker
         $faker = \Faker\Factory::create('fr_FR'); 
 
@@ -67,7 +87,7 @@ class AppFixtures extends Fixture
             {
                 $stage=new Stage();
                 $stage->setTitre($faker->realText($maxNbChars = 20, $indexSize = 2));
-                $stage->setDescription($faker->realText($maxNbChars = 20, $indexSize = 2));
+                $stage->setDescription($faker->realText($maxNbChars = 200, $indexSize = 2));
                 $stage->setEmail($faker->companyEmail);
                 $stage->setMissions($faker->realText($maxNbChars = 50, $indexSize = 2));
                 $stage->setDateAjout($faker->dateTimeBetween($startDate = '-6 months', $endDate = 'now', $timezone = 'Europe/Paris'));

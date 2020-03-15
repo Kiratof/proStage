@@ -33,9 +33,10 @@ class ProStageController extends AbstractController
         return $this->render('pro_stage/affichageFormations.html.twig');
     }
 
-    public function affichageStage($id)
+    public function affichageStage($id, StageRepository $repo)
     {
-        return $this->render('pro_stage/affichageStage.html.twig', ['idRessource' => $id] );
+        $stage = $repo->findOneById($id);
+        return $this->render('pro_stage/affichageStage.html.twig', ['stage' => $stage] );
     }
 
     public function ajoutStage(Request $request, ObjectManager $manager)

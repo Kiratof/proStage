@@ -1,19 +1,21 @@
 {% extends 'base.html.twig' %}
 
+    {% block titrePage %}
+    <h2> {{stage.titre}} </h2>
+    {% endblock %}
 
-{% block titrePage %}
-<h2> Nom de la ressource {{idRessource}} </h2>
-{% endblock %}
+    {% block contenuPage %}
+    
 
-{% block contenuPage %}
-
-<ul class="list-group">
-    <li class="list-group-item"><img src="{{asset('/img/hl3.jpg')}}" class="card-img-top"></li>
-    <li class="list-group-item">Missions : </li>
-    <li class="list-group-item">Compétences</li>
-    <li class="list-group-item">Gratification</li>
-    <li class="list-group-item">Date</li>
-    <li class="list-group-item"><a href="">Télécharger l'offre de stage </a></li>
-</ul>
+        <ul class="list-group">
+            <li class="list-group-item">Entreprise :   {{stage.entreprise.nom}} </li>
+            <li class="list-group-item">Lieu :  {{stage.entreprise.adresse}} </li>
+            <li class="list-group-item">Missions :  {{stage.missions}} </li>
+            <li class="list-group-item">Description : {{stage.description}} </li>
+            {% for formation in stage.formations %}
+            <li class="list-group-item">Formation : {{formation.discipline}} </li>
+            {% endfor %}
+            <li class="list-group-item">Date d'ajout : {{stage.dateAjout| date("d/m/Y")}} </li>
+        </ul>
 
 {% endblock %}

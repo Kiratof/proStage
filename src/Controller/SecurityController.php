@@ -6,6 +6,10 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
+use App\Entity\User;
+use Symfony\Component\HttpFoundation\Request;
+use Doctrine\Common\Persistence\ObjectManager;
+use App\Form\UserType;
 
 class SecurityController extends AbstractController
 {
@@ -32,5 +36,30 @@ class SecurityController extends AbstractController
     public function logout()
     {
         
+    }
+
+    /**
+     * @Route("/register", name="app_register")
+     */
+    public function register(Request $request, ObjectManager $manager)
+    {
+        $user = new User();
+
+        $formulaireUser = $this->createForm(UserType::class, $user);
+
+        $formulaireUser->handleRequest($request);
+
+        if($formulaireUser->isSubmitted() && $formulaireUser->isValid()){
+
+            //Enregistrer l'utilisateur en BD
+            $manager->persist($user);
+            $manager->flush();
+
+            //Ramener l'user à la page d'accueil
+            return $this->redirectToRoute('proStage_accueil');
+
+        }
+
+        return $this->render('security/inscription.html.twig', ['vueFormulaireUser' => $formulaireUser->createView()]);
     }
 }

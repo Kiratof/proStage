@@ -44,6 +44,8 @@
 
 
             <ul class="navbar-nav ml-md-auto">
+
+
               {% if is_granted('ROLE_ADMIN') %}
               <li class="nav-item active">
                 <a class="nav-link" href="{{path('proStage_ajout_stage')}}">
@@ -71,18 +73,21 @@
 
 
               {% else %}
+              <li class="nav-item active">
+                <a class="nav-link" href="{{path('app_register')}}">
+                  Inscrire
+                  <span class="sr-only">(current)</span></a>
+              </li>
 
-              <ul class="navbar-nav ml-md-auto">
-                <li class="nav-item active">
-                  <a class="nav-link" href="{{path('app_login')}}">
-                    <i class="icon-user-5"></i>
-                    Connexion
-                    <span class="sr-only">(current)</span></a>
-                </li>
+              <li class="nav-item active">
+                <a class="nav-link" href="{{path('app_login')}}">
+                  <i class="icon-user-5"></i>
+                  Connexion
+                  <span class="sr-only">(current)</span></a>
+              </li>
+              {% endif %}
 
-
-                {% endif %}
-              </ul>
+            </ul>
 
           </div>
         </nav>

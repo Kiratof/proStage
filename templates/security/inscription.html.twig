@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block titrePage %}Inscrivez vous !{% endblock %}
+
+{% block contenuPage %}
+{{ form_start (vueFormulaireUser) }}
+<div>
+    {{ form_label (vueFormulaireUser.prenom)}}
+    {{ form_widget (vueFormulaireUser.prenom)}}
+</div>
+
+<div>
+    {{ form_label (vueFormulaireUser.nom)}}
+    {{ form_widget (vueFormulaireUser.nom)}}
+</div>
+
+<div>
+    {{ form_label (vueFormulaireUser.email)}}
+    {{ form_widget (vueFormulaireUser.email)}}
+</div>
+
+<div>
+    {{ form_row (vueFormulaireUser.password, {'label': "Mot de passe"})}}
+</div>
+
+<br />
+
+<button type="submit" class="btn btn-dark">M'inscrire</button>
+
+
+{{ form_end (vueFormulaireUser)}}
+{% endblock %}

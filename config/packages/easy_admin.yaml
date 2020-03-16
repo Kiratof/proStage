@@ -5,3 +5,9 @@ easy_admin:
        - App\Entity\Entreprise
        - App\Entity\Formation
        - App\Entity\User
+
+   design:
+       brand_color: '#FF009C'
+
+       assets:
+            favicon: '/img/favicon.ico'

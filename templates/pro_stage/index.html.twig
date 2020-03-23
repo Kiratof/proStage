@@ -16,10 +16,9 @@
     {% endif %}
 
       
-      <div class="card">
-        <a href="{{path('proStage_stages',{id:stage.id})}}"></a>  
+      <div class="card"> 
         <div class="card-body">
-          <h5 class="card-title">{{stage.titre}}</h5>
+          <h5 class="card-title">{{stage.titre}} - {{stage.entreprise.nom}}</h5>
           <p class="card-text">{{stage.description}}</p>
           <p class="card-text"><small class="text-muted">{{stage.dateAjout| date("d/m/Y")}} </small></p>
           {% if is_granted('ROLE_ADMIN') %}

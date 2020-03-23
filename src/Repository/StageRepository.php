@@ -31,7 +31,7 @@ class StageRepository extends ServiceEntityRepository
         ;
     }
 
-        /**
+    /**
      * @return Stage[] Returns an array of Stage objects
      */
     public function findByDateAjoutDql()
@@ -49,6 +49,65 @@ class StageRepository extends ServiceEntityRepository
        return $requete->execute();
 
     }
+
+    
+
+    /**
+     * @return Stage[] Returns an array of Stage objects
+     */
+    public function findStagesParEntreprise($nomEntreprise)
+    {
+        return $this->createQueryBuilder('s')
+            ->join('s.entreprise','e')
+            ->where('e.nom = :nomE')
+            ->setParameter('nomE', $nomEntreprise)
+            ->orderBy('s.dateAjout', 'DESC') 
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
+    /**
+     * @return Stage[] Returns an array of Stage objects
+     */
+    public function findStagesParFormationQB($nomFormation)
+    {
+        return $this->createQueryBuilder('s')
+            ->join('s.formation','f')
+            ->where('f.intitule = :nomF')
+            ->setParameter('nomF', $nomFormation)
+            ->orderBy('s.dateAjout', 'DESC') 
+            ->getQuery()
+            ->getResult()
+        ;
+    }   
+
+    
+    /**
+     * @return Stage[] Returns an array of Stage objects
+     */
+    public function findStagesParFormation($nomFormation)
+    {
+        // Récupérer gestionnaire entité
+        $gestionnaireEntite=$this->getEntityManager();
+
+        // Construire requête
+        $requete=$gestionnaireEntite->createQuery(
+            'SELECT s
+            FROM App\Entity\Stage s
+            JOIN s.formations f
+            WHERE f.intitule = :formation'
+        );
+
+        // Definir valeur du paramètre
+        $requete->setParameter('formation', $nomFormation);
+
+        // Retourner résultats
+        return $requete->execute();
+
+    }
+
+
 
     // /**
     //  * @return Stage[] Returns an array of Stage objects

@@ -24,10 +24,11 @@
           <p class="card-text">{{entreprise.adresse}}</p>
           <p class="card-text">{{entreprise.activite}}</p>
           <a class="nav-link" href="#">{{entreprise.siteWeb}}</a>
+          <a class="nav-link" href="{{path('proStage_stages_entreprise',{'nomEntreprise':entreprise.nom})}}">Voir stages</a>
         </div>
       </div>
 
-      {# Vérifier s'il faut passer à la ligne suivante (toutes les 3 ressources affihées) #}
+      {# Vérifier s'il faut passer à la ligne suivante (toutes les 3 ressources affichées) #}
       {% if loop.index % 3 == 0 %}
         </div>
         <br />

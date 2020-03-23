@@ -21,7 +21,7 @@ class ProStageController extends AbstractController
     
     public function index(StageRepository $repo) 
     {
-        $stages = $repo->findByDateAjoutDql();
+        $stages = $repo->findByDateAjout();
         return $this->render('pro_stage/index.html.twig', ["stages" => $stages]);
     }
 
@@ -85,6 +85,20 @@ class ProStageController extends AbstractController
         }
 
         return $this->render('pro_stage/ajoutModifStage.html.twig', ['vueFormulaireStage' => $formulaireStage->createView(), 'action' => "modifier"]);
+    }
+
+    public function affichageStagesParEntreprise($nomEntreprise, StageRepository $repo)
+    {
+        $stages = $repo->findStagesParEntreprise($nomEntreprise);
+
+        return $this->render('pro_stage/stagesParEntreprise.html.twig', ['stages' => $stages, 'nomEntreprise' => $nomEntreprise]);
+    }
+
+    public function affichageStagesParFormation($nomFormation, StageRepository $repo)
+    {
+        $stages = $repo->findStagesParFormationQB($nomFormation);
+
+        return $this->render('pro_stage/stagesParFormation.html.twig', ['stages' => $stages, 'nomFormation' => $nomFormation]);
     }
 
 

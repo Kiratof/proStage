@@ -21,3 +21,11 @@ proStage_modif_stage:
 proStage_stages:
     path: /stage/{id}
     controller: App\Controller\ProStageController::affichageStage
+
+proStage_stages_entreprise:
+    path: /entreprise/{nomEntreprise}
+    controller: App\Controller\ProStageController::affichageStagesParEntreprise
+
+proStage_stages_formation:
+    path: /formation/{nomFormation}
+    controller: App\Controller\ProStageController::affichageStagesParFormation

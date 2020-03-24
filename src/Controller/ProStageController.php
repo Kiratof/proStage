@@ -9,13 +9,14 @@ use App\Repository\StageRepository;
 use App\Repository\EntrepriseRepository;
 use App\Repository\FormationRepository;
 use App\Entity\Stage;
+use App\Entity\Entreprise;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\HttpFoundation\Request;
 use Doctrine\Common\Persistence\ObjectManager;
 use App\Form\StageType;
-
+use App\Form\EntrepriseType;
 class ProStageController extends AbstractController
 {
     
@@ -66,6 +67,28 @@ class ProStageController extends AbstractController
         }
 
         return $this->render('pro_stage/ajoutModifStage.html.twig', ['vueFormulaireStage' => $formulaireStage->createView(), 'action' => "ajouter"]);
+    }
+
+    public function ajoutEntreprise(Request $request, ObjectManager $manager)
+    {
+        $entreprise = new Entreprise();
+
+        $formulaireEntreprise = $this->createForm(EntrepriseType::class, $entreprise);
+
+        $formulaireEntreprise->handleRequest($request);
+
+        if($formulaireEntreprise->isSubmitted() && $formulaireEntreprise->isValid()){
+
+            //Enregistrer la ressource en BD
+            $manager->persist($entreprise);
+            $manager->flush();
+
+            //Ramener l'user à la page d'accueil
+            return $this->redirectToRoute('proStage_accueil');
+
+        }
+
+        return $this->render('pro_stage/modifEntreprise.html.twig', ['vueFormulaireEntreprise' => $formulaireEntreprise->createView(), 'action' => "ajouter"]);
     }
 
     public function modifStage(Request $request, ObjectManager $manager, Stage $stage)

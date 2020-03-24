@@ -16,11 +16,12 @@
     {% endif %}
 
       
-      <div class="card">  
+      <div class="card">
         <div class="card-body">
           <h5 class="card-title">Intitulé : {{formation.intitule}}</h5>
           <p class="card-text">Discipline : {{formation.discipline}}</p>
           <p class="card-text">Nom complet : {{formation.nom}}</p>
+          <a class="nav-link" href="{{path('proStage_stages_formation',{'nomFormation':formation.nom})}}">Voir stages</a>
         </div>
       </div>
 

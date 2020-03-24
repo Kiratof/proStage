@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block titrePage %}
+{% if action == "ajouter" %}
+Ajout d'une entreprise
+{% else %}
+Modifier un stage
+{% endif %}
+
+{% endblock %}
+
+{% block contenuPage %}
+<h4> Saisissez les caractéristiques de l'entreprise que vous souhaitez partager. </h4> 
+
+
+{{ form_start (vueFormulaireEntreprise) }}
+    <div>
+        {{ form_label (vueFormulaireEntreprise.nom)}}
+        {{ form_widget (vueFormulaireEntreprise.nom, {'attr':{'placeholder':'Nom de l\'entreprise'}})}}
+    </div>
+
+    <div>
+        {{ form_label (vueFormulaireEntreprise.adresse)}}
+        {{ form_widget (vueFormulaireEntreprise.adresse, {'attr':{'placeholder':'Adresse de l\'entreprise'}})}}
+    </div>
+
+    <div>
+        {{ form_label (vueFormulaireEntreprise.activite)}}
+        {{ form_widget (vueFormulaireEntreprise.activite, {'attr':{'placeholder':'Activité de l\'entreprise'}})}}
+    </div>
+
+    <div>
+        {{ form_label (vueFormulaireEntreprise.siteWeb)}}
+        {{ form_widget (vueFormulaireEntreprise.siteWeb, {'attr':{'placeholder':'Site web de l\'entreprise'}})}}
+    </div>
+    
+    <br>
+    <button type="submit" class="btn btn-dark">Enregistrer</button>
+    
+
+{{ form_end (vueFormulaireEntreprise)}}
+
+{% endblock %}

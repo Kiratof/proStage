@@ -6,6 +6,10 @@ proStage_entreprises:
     path: /entreprises
     controller: App\Controller\ProStageController::affichageEntreprises
 
+proStage_ajout_entreprise:
+    path: /entreprise/ajout
+    controller: App\Controller\ProStageController::ajoutEntreprise
+
 proStage_formations:
     path: /formations
     controller: App\Controller\ProStageController::affichageFormations

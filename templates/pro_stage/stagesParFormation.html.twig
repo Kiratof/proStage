@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block titrePage %}
+
+<h1>Stages proposés pour {{nomFormation}}</h1>
+
+{% endblock %}
+
+{% block contenuPage %}
+
+{% if stages is empty %} 
+<h3> {{nomFormation}} ne propose pas de stage pour le moment </h3>
+
+{% else %}
+
+{% set debutNouvelleLigne = true %}
+
+{% for stage in stages %}
+
+{% if debutNouvelleLigne == true %}
+
+<div class="card-group">
+  {% set debutNouvelleLigne = false %}
+  {% endif %}
+
+
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title">{{stage.titre}}</h5>
+      <p class="card-text">{{stage.description}}</p>
+      <p class="card-text"><small class="text-muted">{{stage.dateAjout| date("d/m/Y")}} </small></p>
+      {% if is_granted('ROLE_ADMIN') %}
+      <a class="nav-link" href="{{path('proStage_modif_stage',{'id':stage.id})}}">Modifier</a>
+      {% endif %}
+      <a class="nav-link" href="{{path('proStage_stages',{'id':stage.id})}}">Afficher</a>
+    </div>
+  </div>
+
+  {# Vérifier s'il faut passer à la ligne suivante (toutes les 3 ressources affihées) #}
+  {% if loop.index % 3 == 0 %}
+</div>
+<br />
+{% set debutNouvelleLigne = true %}
+{% endif %}
+
+{% endfor %}
+
+{% endif %}
+
+{% endblock %}

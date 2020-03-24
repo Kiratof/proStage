@@ -48,9 +48,16 @@
 
               {% if is_granted('ROLE_ADMIN') %}
               <li class="nav-item active">
-                <a class="nav-link" href="{{path('proStage_ajout_stage')}}">
+                <a class="nav-link" href="{{path('formation_index')}}">
                   <i class="icon-plus-3"></i>
-                  Gérer les entreprises
+                  CRUD Formation
+                  <span class="sr-only">(current)</span></a>
+              </li>
+
+              <li class="nav-item active">
+                <a class="nav-link" href="{{path('proStage_ajout_entreprise')}}">
+                  <i class="icon-plus-3"></i>
+                  Ajouter une entreprise
                   <span class="sr-only">(current)</span></a>
               </li>
 

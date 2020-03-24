@@ -23,7 +23,7 @@ class Entreprise
      * @ORM\Column(type="string", length=50)
      * @Assert\NotBlank
      * @Assert\Length(
-     *      min = 5,
+     *      min = 4,
      *      max = 50,
      *      minMessage = "Le nom de l'entreprise devrait contenir au moins {{ limit }} caractères",
      *      maxMessage = "Le nom de l'entreprise devrait contenir maximum {{ limit }} caractères"
@@ -39,11 +39,13 @@ class Entreprise
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank
      */
     private $activite;
 
     /**
      * @ORM\Column(type="string", length=50, nullable=true)
+     * @Assert\Url
      */
     private $siteWeb;
 

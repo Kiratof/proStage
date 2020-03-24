@@ -25,6 +25,9 @@
           <p class="card-text">{{entreprise.activite}}</p>
           <a class="nav-link" href="#">{{entreprise.siteWeb}}</a>
           <a class="nav-link" href="{{path('proStage_stages_entreprise',{'nomEntreprise':entreprise.nom})}}">Voir stages</a>
+          {% if is_granted('ROLE_ADMIN') %}
+          <a class="nav-link" href="{{path('proStage_modif_entreprise',{'id':entreprise.id})}}">Modifier</a>
+          {% endif %}
         </div>
       </div>
 

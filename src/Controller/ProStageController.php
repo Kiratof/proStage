@@ -69,27 +69,7 @@ class ProStageController extends AbstractController
         return $this->render('pro_stage/ajoutModifStage.html.twig', ['vueFormulaireStage' => $formulaireStage->createView(), 'action' => "ajouter"]);
     }
 
-    public function ajoutEntreprise(Request $request, ObjectManager $manager)
-    {
-        $entreprise = new Entreprise();
 
-        $formulaireEntreprise = $this->createForm(EntrepriseType::class, $entreprise);
-
-        $formulaireEntreprise->handleRequest($request);
-
-        if($formulaireEntreprise->isSubmitted() && $formulaireEntreprise->isValid()){
-
-            //Enregistrer la ressource en BD
-            $manager->persist($entreprise);
-            $manager->flush();
-
-            //Ramener l'user à la page d'accueil
-            return $this->redirectToRoute('proStage_accueil');
-
-        }
-
-        return $this->render('pro_stage/modifEntreprise.html.twig', ['vueFormulaireEntreprise' => $formulaireEntreprise->createView(), 'action' => "ajouter"]);
-    }
 
     public function modifStage(Request $request, ObjectManager $manager, Stage $stage)
     {
@@ -122,6 +102,49 @@ class ProStageController extends AbstractController
         $stages = $repo->findStagesParFormationQB($nomFormation);
 
         return $this->render('pro_stage/stagesParFormation.html.twig', ['stages' => $stages, 'nomFormation' => $nomFormation]);
+    }
+
+    public function ajoutEntreprise(Request $request, ObjectManager $manager)
+    {
+        $entreprise = new Entreprise();
+
+        $formulaireEntreprise = $this->createForm(EntrepriseType::class, $entreprise);
+
+        $formulaireEntreprise->handleRequest($request);
+
+        if($formulaireEntreprise->isSubmitted() && $formulaireEntreprise->isValid()){
+
+            //Enregistrer la ressource en BD
+            $manager->persist($entreprise);
+            $manager->flush();
+
+            //Ramener l'user à la page d'accueil
+            return $this->redirectToRoute('proStage_accueil');
+
+        }
+
+        return $this->render('pro_stage/ajoutModifEntreprise.html.twig', ['vueFormulaireEntreprise' => $formulaireEntreprise->createView(), 'action' => "ajouter"]);
+    }
+
+    public function modifEntreprise(Request $request, ObjectManager $manager, Entreprise $entreprise)
+    {
+
+        $formulaireEntreprise = $this->createForm(EntrepriseType::class, $entreprise);
+
+        $formulaireEntreprise->handleRequest($request);
+
+        if($formulaireEntreprise->isSubmitted() && $formulaireEntreprise->isValid()){
+
+            //Enregistrer la ressource en BD
+            $manager->persist($entreprise);
+            $manager->flush();
+
+            //Ramener l'user à la page d'accueil
+            return $this->redirectToRoute('proStage_accueil');
+
+        }
+
+        return $this->render('pro_stage/ajoutModifEntreprise.html.twig', ['vueFormulaireEntreprise' => $formulaireEntreprise->createView(), 'action' => "modifier"]);
     }
 
 
